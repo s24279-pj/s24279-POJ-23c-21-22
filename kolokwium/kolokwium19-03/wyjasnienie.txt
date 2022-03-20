@@ -1,0 +1,17 @@
+Dzien dobry,
+
+przesylam plik, ktory zrobilem podczas kolokwium wczorajszego. Nie 
+dodalem go wczoraj, poniewaz nie mialem skonfigurowanego GitHuba z moim 
+MacOS (brak publicznego klucza). Na poprzednim semestrze robilem 
+wszystko na VM, w linuxie.
+
+Probowalem dodac plik podczas kolokwium, ale niestety czasu nie 
+starczylo na konfiguracje ssh. Wiem, ze "grubo" po terminie, zrozumiem, 
+jak Pan nie przyjmie pliku. W sumie i tak mi sie nie skompilowalo niestety. 
+
+Juz ogarnalem IDE i git'a, wiec mam nadzieje, ze na nastepnym zajeciach 
+bede mogl w 100% skupic sie na zadaniu.
+
+Pozdrawiam,
+Jakub Wiecek
+s24279

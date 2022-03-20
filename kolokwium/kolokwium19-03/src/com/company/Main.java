@@ -6,10 +6,11 @@ public class Main {
                 System.out.println(sum(tablica));
             }
 
-            public static String sum(String[] array) {
+            public static int sum(String[] array) {
+                int[] tablica = new int[0];
                 int sum = 0;
-                for(String element:tablica){
-                    sum+=Integer.parseInt(element);
+                for(int i = 0; i < tablica.length; i++){
+                    sum+=Integer.parseInt((i));
                 }
                 return sum;
             }
