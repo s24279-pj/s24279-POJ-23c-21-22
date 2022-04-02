@@ -25,29 +25,31 @@ public class s24279 extends Unit {
        while (nearestCollision() >= 2) {
             if (steps % 3 == 0 && nearestCollision() >= 1) {
                 rotateBy(randAngle);
-                this.sleep(100);
+                this.sleep(200);
             } else if (steps % 4 == 0 && nearestCollision() >= 1) {
                 rotateBy(-randAngle);
                 this.sleep(200);
            }
-                rotateBy(-x);
-            this.sleep(200);
+            rotateBy(-x);
+            this.sleep(100);
             rotateBy(x);
-            this.sleep(200);
+            this.sleep(100);
             steps++;
+            resetTachoCounter();
+            resetRotateTachoCounter();
         }
     }
 
     @Override
     public void run() {
-        this.enableStopOnWall();
+      //  this.enableStopOnWall();
         this.enableMovement();
         this.forward();
         int randAngle = (int) ((Math.random() * 180) - 90);
 
         for (; ; ) {
 
-            if(this.nearestCollision() <= 2 && nearestCollision() >= 0) {
+            if(this.nearestCollision() < 2 && nearestCollision() >= 0) {
                 if (this.whatIsInRange() == 3) {
                     do {
                         this.attackInNextMove();
@@ -56,10 +58,12 @@ public class s24279 extends Unit {
                 } else if (this.whatIsInRange() == 1 || whatIsInRange() == 2) {
                     if(this.nearestCollision() >= 0 && nearestCollision() <= 1 ) {
                         this.setSpeed(80);
+                        resetTachoCounter();
+                        resetRotateTachoCounter();
                     }
                     this.backward();
+                   // sleep(200);
                     rotateBy(160);
-                    sleep(400);
                     this.forward();
                 }this.setSpeed(100);
             }seek(25);
