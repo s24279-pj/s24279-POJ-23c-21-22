@@ -7,6 +7,7 @@ public class Alien {
     private int y_axis = 0;
     public int alien_height = 40;
     public int alien_width = 40;
+    boolean status;
 
     public void position(int pos_x, int pos_y){
         x_axis = pos_x;
@@ -27,4 +28,9 @@ public class Alien {
             alien.setColor(Color.red);
             alien.fill(alien_ship);
     }
+
+    public boolean isAlive(){
+        return status;
+    }
+    // do tego momentu jest git
 }

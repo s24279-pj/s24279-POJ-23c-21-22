@@ -10,7 +10,6 @@ public class Game extends JFrame {
     Fleet fleet = new Fleet();
     Player player = new Player();
 
-
     public Game() {
         setTitle("Space Invaders");
         setSize(900, 700);
@@ -19,8 +18,8 @@ public class Game extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         fleet.makeFleet();
         fleet.setlayout();
-
-        Timer timerClock = new Timer(250, new ActionListener() {
+//delay 20
+        Timer timerClock = new Timer(5, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 fleet.moveFleet();
@@ -35,9 +34,9 @@ public class Game extends JFrame {
         fleet.drawFleet(g);
         player.drawPlayer(g);
 
-      for (int i =0; i < 10; i++) {
+    /*  for (int i =0; i < 10; i++) {
           System.out.println("Ship nr :" + i + " pos_X: " + fleet.line1[i].current_x());
-      }
+      }*/
     }
 
     public static void main(String[] args) {

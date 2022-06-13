@@ -40,12 +40,19 @@ public class Player extends JFrame {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                move = true;
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_RIGHT) {
+                    position(x_axis+=10, y_axis);
+                }else if (key == KeyEvent.VK_LEFT) {
+
+                }else if (key == KeyEvent.VK_SPACE) {
+
+                }
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                move = false;
+
             }
         });
     }
