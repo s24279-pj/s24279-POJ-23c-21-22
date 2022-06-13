@@ -17,10 +17,10 @@ public class Game extends JFrame {
         setVisible(true);
         setBackground(Color.DARK_GRAY);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-       Timer timerClock = new Timer(1000, new ActionListener() {
+
+        Timer timerClock = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fleet.moveFleet();
                 repaint();
             }
         });
@@ -28,19 +28,24 @@ public class Game extends JFrame {
     }
 
     public void paint(Graphics g) {
-        g.clearRect(0,0,900,700);
         fleet.makeFleet();
-      //  fleet.setlayout();
-      //  fleet.moveFleet();
+        fleet.moveFleet();
+        fleet.setlayout();
+        g.clearRect(0,0,900,700);
         fleet.drawFleet(g);
 
-        player.drawPlayer(g);
+                //  player.drawPlayer(g);
 
-        System.out.println(fleet.line1[0].current_x());
+      for (int i =0; i < 10; i++) {
+          System.out.println("Ship nr :" + i + " pos_X: " + fleet.line1[i].current_x());
+      }
     }
 
     public static void main(String[] args) {
 
         var game = new Game();
+
     }
+
+
 }

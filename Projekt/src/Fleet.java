@@ -14,35 +14,32 @@ public class Fleet {
     public void makeFleet(){
 
        for (int i = 0; i < 10; i++) {
-           line1[i] = ship;
-           line2[i] = ship;
-           line3[i] = ship;
+           line1[i] = new Alien();
+           line2[i] = new Alien();
+           line3[i] = new Alien();
        }
     }
 
-    public void drawFleet(Graphics g) {
+    public void setlayout() {
         start_x = 50;
         start_y = 70;
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             line1[i].position(start_x, start_y);
-            start_x = start_x + ship.alien_width + 20;
-            line1[i].drawAlien(g);
+            start_x += ship.alien_width + 15;
         }
 
         start_x = 50;
-        start_y = start_y + ship.alien_height + 20;
-        for(int i = 0; i < 10; i++) {
+        start_y += 70;
+        for (int i = 0; i < 10; i++) {
             line2[i].position(start_x, start_y);
-            start_x = start_x + ship.alien_width + 20;
-            line2[i].drawAlien(g);
+            start_x += ship.alien_width + 15;
         }
 
         start_x = 50;
-        start_y = start_y + ship.alien_height + 20;
-        for(int i = 0; i < 10; i++) {
+        start_y += 70;
+        for (int i = 0; i < 10; i++) {
             line3[i].position(start_x, start_y);
-            start_x = start_x + ship.alien_width + 20;
-            line3[i].drawAlien(g);
+            start_x += ship.alien_width + 15;
         }
     }
 
@@ -54,18 +51,18 @@ public class Fleet {
         }
     }
 
+    public void drawFleet(Graphics g) {
+        for(int i = 0; i < 10; i++) {
+            line1[i].drawAlien(g);
+            line2[i].drawAlien(g);
+            line3[i].drawAlien(g);
+        }
+    }
+
 /*    public void drawFleet(Graphics g) {
         for(int i = 0; i < 10; i++) {
             line1[i].drawAlien(g);
         }
     }
-
-    public void setlayout() {
-        int start_x = 10;
-        int start_y = 50;
-        for (int i = 0; i < 10; i++) {
-            line1[i].position(start_x, start_y);
-            start_x = ship.alien_width + 15;
-        }
-    }*/
+*/
 }
