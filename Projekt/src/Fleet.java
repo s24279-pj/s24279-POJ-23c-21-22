@@ -12,7 +12,6 @@ public class Fleet {
     int start_y;
     boolean moveToRight = true;
     int window_width = 900;
-    int window_height = 700;
 
     public void makeFleet(){
 
@@ -63,12 +62,7 @@ public class Fleet {
                 if(!line1[i].isAlive() || !line2[i].isAlive() || !line3[i].isAlive()) {
                     if(line1[i].current_x() > window_width + line1[i].alien_width - 100) {
                         moveToRight = false;
-                        for (int j = 0; j < 10; j++) {
-                            line1[j].position(line1[j].current_x(), line1[j].current_y() + 50);
-                            line2[j].position(line2[j].current_x(), line2[j].current_y() + 50);
-                            line3[j].position(line3[j].current_x(), line3[j].current_y() + 50);
-                        }
-                        return;
+                        moveDown();
                     }
                 }
             }
@@ -85,12 +79,7 @@ public class Fleet {
                 if(!line1[i].isAlive() || !line2[i].isAlive() || !line3[i].isAlive()) {
                     if(line1[i].current_x() == 50) {
                         moveToRight = true;
-                        for (int j = 0; j < 10; j++) {
-                            line1[j].position(line1[j].current_x(), line1[j].current_y() + 50);
-                            line2[j].position(line2[j].current_x(), line2[j].current_y() + 50);
-                            line3[j].position(line3[j].current_x(), line3[j].current_y() + 50);
-                        }
-                        return;
+                        moveDown();
                     }
                 }
             }
@@ -100,16 +89,14 @@ public class Fleet {
                 line2[i].position(line2[i].current_x() - 1, line2[i].current_y());
                 line3[i].position(line3[i].current_x() - 1, line3[i].current_y());
             }
-
         }
     }
 
-
-    //backup ruch w prawo
-/*    //ruch w prawo
-        for (int i = 0; i < 10; i++) {
-        line1[i].position(line1[i].current_x() + 1, line1[i].current_y());
-        line2[i].position(line2[i].current_x() + 1, line2[i].current_y());
-        line3[i].position(line3[i].current_x() + 1, line3[i].current_y());
-    }*/
+    private void moveDown() {
+        for (int j = 0; j < 10; j++) {
+            line1[j].position(line1[j].current_x(), line1[j].current_y() + 50);
+            line2[j].position(line2[j].current_x(), line2[j].current_y() + 50);
+            line3[j].position(line3[j].current_x(), line3[j].current_y() + 50);
+        }
+    }
 }

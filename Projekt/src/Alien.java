@@ -29,8 +29,9 @@ public class Alien {
             alien.fill(alien_ship);
     }
 
-    public boolean isAlive(){
+    public boolean isAlive() {
         return status;
     }
     // do tego momentu jest git
+
 }
