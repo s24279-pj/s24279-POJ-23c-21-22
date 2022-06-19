@@ -102,7 +102,7 @@ public class Fleet {
         }
     }
 
-/*    public boolean collisionCheck(){
+    public boolean collisionCheck(){
         for(int i = 0; i < 10; i++) {
             if (line1[i].isAlive() || line2[i].isAlive() || line3[i].isAlive()) {
                 if (line1[i].isHit(line1[i].current_x(), line1[i].current_y()) || line2[i].isHit(line2[i].current_x(), line2[i].current_y()) || line3[i].isHit(line3[i].current_x(), line3[i].current_y())) {
@@ -115,7 +115,7 @@ public class Fleet {
         return false;
     }
 
-    public void attack() {
+/*    public void attack() {
         Random random = new Random();
         int alien_nr = random.nextInt(10);
         if(line1[alien_nr].isAlive()){

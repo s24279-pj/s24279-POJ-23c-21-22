@@ -8,7 +8,7 @@ public class Game extends JFrame {
     Fleet fleet = new Fleet();
     Player player = new Player();
     Laser laser = new Laser();
-    AlienLaser alienLaser = new AlienLaser();
+  //  AlienLaser alienLaser = new AlienLaser();
 
     static boolean goRight = false;
     static boolean goLeft = false;
@@ -32,6 +32,9 @@ public class Game extends JFrame {
                     player.position(player.x_axis += 10, player.y_axis);
                     if(!laserShot) {
                         laser.position(laser.shot_x += 10, player.y_axis);
+                    }else {
+                        laser.position(laser.shot_x += 10, player.y_axis);
+                        laser.shotMove();
                     }
                 }else {
                     player.position(player.x_axis, player.y_axis);
@@ -43,15 +46,18 @@ public class Game extends JFrame {
                     player.position(player.x_axis -= 10, player.y_axis);
                     if(!laserShot) {
                         laser.position(laser.shot_x -= 10, player.y_axis);
+                    }else {
+                        laser.position(laser.shot_x -= 10, player.y_axis);
+                        laser.shotMove();
                     }
                 }else {
                     player.position(player.x_axis, player.y_axis);
                 }
             }
             //strzal player'a
-            if (laserShot) {
+      /*      if (laserShot) {
                     laser.shotMove();
-            }
+            }*/
             fleet.moveFleet();
             repaint();
         });
@@ -62,7 +68,7 @@ public class Game extends JFrame {
         g.clearRect(0,0,900,700);
         fleet.drawFleet(g);
         player.drawPlayer(g);
-     //   alienLaser.drawAlienLaser(g);
+    //    alienLaser.drawAlienLaser(g);
         laser.drawLaser(g);
     }
 

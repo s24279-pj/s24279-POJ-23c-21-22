@@ -12,7 +12,7 @@ public class Laser {
     int shot_x = 400 + (player.player_width / 2);
    // int shot_x = 0;
     public void position(int pos_x, int pos_y){
-        shot_x = pos_x;
+        pos_x = shot_x;
         shot_y = pos_y;
     }
 
@@ -36,8 +36,7 @@ public class Laser {
     public void shotMove() {
         shot_y -= 10;
         if (shot_y < 0) {
-            position(shot_x, player.y_axis);
-            shot_y = player.y_axis;
+            position(shot_x, shot_y);
             Game.laserShot = false;
         }
     }
