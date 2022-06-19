@@ -1,26 +1,28 @@
 import java.awt.*;
+import java.util.Random;
 
 public class Fleet {
 
     Alien ship = new Alien();
+ //   AlienLaser alien_laser = new AlienLaser();
 
     Alien[] line1 = new Alien[10];
     Alien[] line2 = new Alien[10];
     Alien[] line3 = new Alien[10];
+
+    public Fleet() {
+        for (int i = 0; i < 10; i++) {
+            line1[i] = new Alien();
+            line2[i] = new Alien();
+            line3[i] = new Alien();
+        }
+    }
 
     int start_x = 50;
     int start_y;
     boolean moveToRight = true;
     int window_width = 900;
 
-    public void makeFleet(){
-
-       for (int i = 0; i < 10; i++) {
-           line1[i] = new Alien();
-           line2[i] = new Alien();
-           line3[i] = new Alien();
-       }
-    }
 
     public void setlayout() {
         start_x = 50;
@@ -100,7 +102,7 @@ public class Fleet {
         }
     }
 
-    public boolean collisionCheck(){
+/*    public boolean collisionCheck(){
         for(int i = 0; i < 10; i++) {
             if (line1[i].isAlive() || line2[i].isAlive() || line3[i].isAlive()) {
                 if (line1[i].isHit(line1[i].current_x(), line1[i].current_y()) || line2[i].isHit(line2[i].current_x(), line2[i].current_y()) || line3[i].isHit(line3[i].current_x(), line3[i].current_y())) {
@@ -112,5 +114,14 @@ public class Fleet {
         }
         return false;
     }
+
+    public void attack() {
+        Random random = new Random();
+        int alien_nr = random.nextInt(10);
+        if(line1[alien_nr].isAlive()){
+            alien_laser.shotMove(line1[alien_nr].current_x() + (ship.alien_width/2), line1[alien_nr].current_y());
+        }
+
+    }*/
 
 }

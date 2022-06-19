@@ -8,10 +8,13 @@ public class Game extends JFrame {
     Fleet fleet = new Fleet();
     Player player = new Player();
     Laser laser = new Laser();
+    AlienLaser alienLaser = new AlienLaser();
+
     static boolean goRight = false;
     static boolean goLeft = false;
     static boolean laserShot = false;
     int window_width = 900;
+
 
     public Game() {
         setTitle("Space Invaders");
@@ -19,7 +22,6 @@ public class Game extends JFrame {
         setVisible(true);
         setBackground(Color.DARK_GRAY);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        fleet.makeFleet();
         fleet.setlayout();
         addKeyListener(new Listener());
         Timer timerClock = new Timer(10, e -> {
@@ -60,6 +62,7 @@ public class Game extends JFrame {
         g.clearRect(0,0,900,700);
         fleet.drawFleet(g);
         player.drawPlayer(g);
+     //   alienLaser.drawAlienLaser(g);
         laser.drawLaser(g);
     }
 

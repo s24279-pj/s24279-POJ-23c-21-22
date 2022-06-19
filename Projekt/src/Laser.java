@@ -35,7 +35,7 @@ public class Laser {
     //tutaj trzeba poprawic restart pozycji, po osiagnieciu krawedzi
     public void shotMove() {
         shot_y -= 10;
-        if (shot_y < 0 || fleet.collisionCheck()) {
+        if (shot_y < 0) {
             position(shot_x, player.y_axis);
             shot_y = player.y_axis;
             Game.laserShot = false;
