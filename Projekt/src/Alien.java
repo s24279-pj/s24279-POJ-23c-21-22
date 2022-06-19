@@ -7,7 +7,7 @@ public class Alien {
     private int y_axis = 0;
     public int alien_height = 40;
     public int alien_width = 40;
-    boolean status;
+    boolean alienStatus = true;
 
     public void position(int pos_x, int pos_y){
         x_axis = pos_x;
@@ -30,8 +30,19 @@ public class Alien {
     }
 
     public boolean isAlive() {
-        return status;
+        return alienStatus;
     }
-    // do tego momentu jest git
+
+    //kiedy jest trafiony?? - musi tez byc tutaj isAlive na false jesli trafiony
+    public boolean isHit(int x, int y) {
+        //x = line1[i].current_x(), y = line1[i].current_y()
+        if(x >= x_axis && x <= x_axis + alien_width){
+            if(y >= y_axis && y <= y_axis + alien_height){
+                alienStatus = false;
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

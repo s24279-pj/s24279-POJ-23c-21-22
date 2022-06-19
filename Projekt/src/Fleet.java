@@ -22,14 +22,6 @@ public class Fleet {
        }
     }
 
-    public void drawFleet(Graphics g) {
-        for(int i = 0; i < 10; i++) {
-            line1[i].drawAlien(g);
-            line2[i].drawAlien(g);
-            line3[i].drawAlien(g);
-        }
-    }
-
     public void setlayout() {
         start_x = 50;
         start_y = 70;
@@ -53,13 +45,21 @@ public class Fleet {
         }
     }
 
+    public void drawFleet(Graphics g) {
+        for(int i = 0; i < 10; i++) {
+            line1[i].drawAlien(g);
+            line2[i].drawAlien(g);
+            line3[i].drawAlien(g);
+        }
+    }
+
 
     public void moveFleet() {
 
         if(moveToRight) {
             //prawa krawedz, ruch w dół
             for (int i = 9; i >= 0; i--) {
-                if(!line1[i].isAlive() || !line2[i].isAlive() || !line3[i].isAlive()) {
+                if(line1[i].isAlive() || line2[i].isAlive() || line3[i].isAlive()) {
                     if(line1[i].current_x() > window_width + line1[i].alien_width - 100) {
                         moveToRight = false;
                         moveDown();
@@ -76,7 +76,7 @@ public class Fleet {
 
             //lewa krawedz, ruch w dół
             for (int i = 0; i < 10; i++) {
-                if(!line1[i].isAlive() || !line2[i].isAlive() || !line3[i].isAlive()) {
+                if(line1[i].isAlive() || line2[i].isAlive() || line3[i].isAlive()) {
                     if(line1[i].current_x() == 50) {
                         moveToRight = true;
                         moveDown();
@@ -99,4 +99,18 @@ public class Fleet {
             line3[j].position(line3[j].current_x(), line3[j].current_y() + 50);
         }
     }
+
+    public boolean collisionCheck(){
+        for(int i = 0; i < 10; i++) {
+            if (line1[i].isAlive() || line2[i].isAlive() || line3[i].isAlive()) {
+                if (line1[i].isHit(line1[i].current_x(), line1[i].current_y()) || line2[i].isHit(line2[i].current_x(), line2[i].current_y()) || line3[i].isHit(line3[i].current_x(), line3[i].current_y())) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
 }

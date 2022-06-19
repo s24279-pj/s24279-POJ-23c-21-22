@@ -24,22 +24,24 @@ public class Game extends JFrame {
         addKeyListener(new Listener());
         Timer timerClock = new Timer(10, e -> {
             //ruch player'a w prawo
+
             if (goRight){
                 if(player.current_x() != window_width - 100) {
                     player.position(player.x_axis += 10, player.y_axis);
-                    if(!laserShot)
-                    laser.position(laser.shot_x += 10, player.y_axis);
+                    if(!laserShot) {
+                        laser.position(laser.shot_x += 10, player.y_axis);
+                    }
                 }else {
                     player.position(player.x_axis, player.y_axis);
                 }
-             //   System.out.println(player.current_x());
             }
             //ruch player'a w lewo
             if (goLeft){
                 if(player.current_x() != window_width - 850) {
                     player.position(player.x_axis -= 10, player.y_axis);
-                    if(!laserShot)
-                    laser.position(laser.shot_x -= 10, player.y_axis);
+                    if(!laserShot) {
+                        laser.position(laser.shot_x -= 10, player.y_axis);
+                    }
                 }else {
                     player.position(player.x_axis, player.y_axis);
                 }
@@ -48,7 +50,6 @@ public class Game extends JFrame {
             if (laserShot) {
                     laser.shotMove();
             }
-        //    System.out.println(laser.current_x());
             fleet.moveFleet();
             repaint();
         });
@@ -60,16 +61,6 @@ public class Game extends JFrame {
         fleet.drawFleet(g);
         player.drawPlayer(g);
         laser.drawLaser(g);
-
-    /*  for (int i =0; i < 10; i++) {
-          System.out.println("Ship nr :" + i + " pos_X: " + fleet.line1[i].current_x());
-      }*/
-    }
-
-    public static void main(String[] args) {
-
-        var game = new Game();
-
     }
 
     static class Listener implements KeyListener {
@@ -98,6 +89,16 @@ public class Game extends JFrame {
             if (key == KeyEvent.VK_LEFT) {
                 goLeft = false;
             }
+            if (key == KeyEvent.VK_SPACE) {
+
+            }
         }
     }
+
+    public static void main(String[] args) {
+
+        var game = new Game();
+    }
+
+
 }

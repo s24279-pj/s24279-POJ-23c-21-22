@@ -4,6 +4,7 @@ import java.awt.geom.Rectangle2D;
 public class Laser {
 
     Player player = new Player();
+    Fleet fleet = new Fleet();
 
     int x_axis = 0;
     int y_axis = 0;
@@ -31,9 +32,10 @@ public class Laser {
         laser.fill(laser_blast);
     }
 
+    //tutaj trzeba poprawic restart pozycji, po osiagnieciu krawedzi
     public void shotMove() {
         shot_y -= 10;
-        if (shot_y < 0) {
+        if (shot_y < 0 || fleet.collisionCheck()) {
             position(shot_x, player.y_axis);
             shot_y = player.y_axis;
             Game.laserShot = false;
