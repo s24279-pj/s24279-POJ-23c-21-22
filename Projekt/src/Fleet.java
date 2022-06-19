@@ -22,6 +22,14 @@ public class Fleet {
        }
     }
 
+    public void drawFleet(Graphics g) {
+        for(int i = 0; i < 10; i++) {
+            line1[i].drawAlien(g);
+            line2[i].drawAlien(g);
+            line3[i].drawAlien(g);
+        }
+    }
+
     public void setlayout() {
         start_x = 50;
         start_y = 70;
@@ -45,14 +53,6 @@ public class Fleet {
         }
     }
 
-
-    public void drawFleet(Graphics g) {
-        for(int i = 0; i < 10; i++) {
-            line1[i].drawAlien(g);
-            line2[i].drawAlien(g);
-            line3[i].drawAlien(g);
-        }
-    }
 
     public void moveFleet() {
 

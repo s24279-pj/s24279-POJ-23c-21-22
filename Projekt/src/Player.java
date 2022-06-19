@@ -26,6 +26,9 @@ public class Player extends JFrame {
         return x_axis;
     }
 
+    public int current_y() {
+        return y_axis;
+    }
 
     public void drawPlayer(Graphics g) {
         Graphics2D player = (Graphics2D) g;
@@ -33,8 +36,5 @@ public class Player extends JFrame {
         player.setColor(Color.yellow);
         player.fill(player_ship);
     }
-
-
-
 }
 
