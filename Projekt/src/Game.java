@@ -24,7 +24,7 @@ public class Game extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         fleet.setlayout();
         addKeyListener(new Listener());
-        Timer timerClock = new Timer(10, e -> {
+        Timer timerClock = new Timer(20, e -> {
             //ruch player'a w prawo
 
             if (goRight){
@@ -33,7 +33,6 @@ public class Game extends JFrame {
                     if(!laserShot) {
                         laser.position(laser.shot_x += 10, player.y_axis);
                     }
-
                 }else {
                     player.position(player.x_axis, player.y_axis);
                 }
@@ -51,7 +50,8 @@ public class Game extends JFrame {
             }
             //strzal player'a
             if (laserShot) {
-                    laser.shotMove(player.x_axis);
+                fleet.checkPlayerShot(laser.shot_x, laser.shot_y);
+                laser.shotMove(player.x_axis);
             }
             fleet.moveFleet();
             repaint();
@@ -92,9 +92,6 @@ public class Game extends JFrame {
             }
             if (key == KeyEvent.VK_LEFT) {
                 goLeft = false;
-            }
-            if (key == KeyEvent.VK_SPACE) {
-
             }
         }
     }

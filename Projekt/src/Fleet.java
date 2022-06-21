@@ -23,6 +23,7 @@ public class Fleet {
     boolean moveToRight = true;
    // boolean isShooting = false;
     int window_width = 900;
+    boolean test = false; // testowa zmienna do Laser.shotMove() - oznacza trafienie alien'a
 
 
     public void setlayout() {
@@ -103,7 +104,41 @@ public class Fleet {
         }
     }
 
+    public void checkPlayerShot(int laser_x, int laser_y) {
+        for(int i = 0; i < 10; i++) {
+            //checking if lowest's line alien is in range and if it is alive
+            if(laser_x >= line3[i].current_x() && laser_x <= (line3[i].current_x() + ship.alien_width) ){
+                if(laser_y <= line3[i].current_y() + ship.alien_height && laser_y >= line3[i].current_y()){
+                    if(line3[i].isAlive()) {
+                        line3[i].alienStatus = false;
+                        test = true;
+                        //checking if middle line alien is in range and if it is alive
+                    }else if(laser_x >= line2[i].current_x() && laser_x <= (line2[i].current_x() + ship.alien_width) ){
+                        if(laser_y <= line2[i].current_y() + ship.alien_height && laser_y >= line2[i].current_y()){
+                            if(line2[i].isAlive()) {
+                                line2[i].alienStatus = false;
+                                test = true;
+                                //checking if top line alien is in range and if it is alive
+                            }else if(laser_x >= line1[i].current_x() && laser_x <= (line1[i].current_x() + ship.alien_width) ){
+                                if(laser_y <= line1[i].current_y() + ship.alien_height && laser_y >= line1[i].current_y()){
+                                    if(line1[i].isAlive()) {
+                                        line1[i].alienStatus = false;
+                                        test = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
+
+            }
+
+
+        }
+
+    }
 
 /*    public void attack() {
         Random random = new Random();
@@ -114,5 +149,27 @@ public class Fleet {
         }
 
     }*/
+    //back-up
+/*public void checkPlayerShot(int laser_x, int laser_y) {
+    for(int i = 0; i < 10; i++) {
+        if(laser_x >= line3[i].current_x() && laser_x <= (line3[i].current_x() + ship.alien_width) ){
+            if(laser_y <= line3[i].current_y() + ship.alien_height && laser_y >= line3[i].current_y()){
+                line3[i].alienStatus = false;
+                test = true;
+            }
+        }
+        if(laser_x >= line2[i].current_x() && laser_x <= (line2[i].current_x() + ship.alien_width) ){
+            if(laser_y <= line2[i].current_y() + ship.alien_height && laser_y >= line2[i].current_y()){
+                line2[i].alienStatus = false;
+                test = true;
+            }
+        }
+        if(laser_x >= line1[i].current_x() && laser_x <= (line1[i].current_x() + ship.alien_width) ){
+            if(laser_y <= line1[i].current_y() + ship.alien_height && laser_y >= line1[i].current_y()){
+                line1[i].alienStatus = false;
+                test = true;
+            }
+        }
 
-}
+    }*/
+

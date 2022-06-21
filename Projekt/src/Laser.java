@@ -32,11 +32,13 @@ public class Laser {
         laser.fill(laser_blast);
     }
 
+    //sprawdzic, czemu przelatuje do konca, mimo, ze uderza w alien'a
     public void shotMove(int x) {
         shot_y -= 10;
-        if (shot_y < 0) {
+        if (shot_y < 0 || fleet.test) {
             position(x + (player.player_width/2), shot_y);
             Game.laserShot = false;
         }
+
     }
 }

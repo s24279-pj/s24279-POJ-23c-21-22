@@ -25,7 +25,11 @@ public class Alien {
     public void drawAlien(Graphics g) {
             Graphics2D alien = (Graphics2D) g;
             Rectangle2D.Double alien_ship = new Rectangle2D.Double(x_axis, y_axis, alien_width, alien_height);
-            alien.setColor(Color.red);
+            if(alienStatus) {
+                alien.setColor(Color.red);
+            }else{
+                alien.setColor(Color.DARK_GRAY);
+            }
             alien.fill(alien_ship);
     }
 
