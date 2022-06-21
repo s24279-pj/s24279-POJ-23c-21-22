@@ -34,7 +34,7 @@ public class Alien {
     }
 
     //kiedy jest trafiony?? - musi tez byc tutaj isAlive na false jesli trafiony
-    public boolean isHit(int x, int y) {
+/*    public boolean isHit(int x, int y) {
         //x = line1[i].current_x(), y = line1[i].current_y()
         if(x >= x_axis && x <= x_axis + alien_width){
             if(y >= y_axis && y <= y_axis + alien_height){
@@ -43,6 +43,6 @@ public class Alien {
             }
         }
         return false;
-    }
+    }*/
 
 }

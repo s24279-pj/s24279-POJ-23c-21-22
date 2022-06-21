@@ -12,7 +12,7 @@ public class Laser {
     int shot_x = 400 + (player.player_width / 2);
    // int shot_x = 0;
     public void position(int pos_x, int pos_y){
-        pos_x = shot_x;
+        shot_x = pos_x;
         shot_y = pos_y;
     }
 
@@ -32,11 +32,10 @@ public class Laser {
         laser.fill(laser_blast);
     }
 
-    //tutaj trzeba poprawic restart pozycji, po osiagnieciu krawedzi
-    public void shotMove() {
+    public void shotMove(int x) {
         shot_y -= 10;
         if (shot_y < 0) {
-            position(shot_x, shot_y);
+            position(x + (player.player_width/2), shot_y);
             Game.laserShot = false;
         }
     }

@@ -32,10 +32,8 @@ public class Game extends JFrame {
                     player.position(player.x_axis += 10, player.y_axis);
                     if(!laserShot) {
                         laser.position(laser.shot_x += 10, player.y_axis);
-                    }else {
-                        laser.position(laser.shot_x += 10, player.y_axis);
-                        laser.shotMove();
                     }
+
                 }else {
                     player.position(player.x_axis, player.y_axis);
                 }
@@ -46,18 +44,15 @@ public class Game extends JFrame {
                     player.position(player.x_axis -= 10, player.y_axis);
                     if(!laserShot) {
                         laser.position(laser.shot_x -= 10, player.y_axis);
-                    }else {
-                        laser.position(laser.shot_x -= 10, player.y_axis);
-                        laser.shotMove();
                     }
                 }else {
                     player.position(player.x_axis, player.y_axis);
                 }
             }
             //strzal player'a
-      /*      if (laserShot) {
-                    laser.shotMove();
-            }*/
+            if (laserShot) {
+                    laser.shotMove(player.x_axis);
+            }
             fleet.moveFleet();
             repaint();
         });
