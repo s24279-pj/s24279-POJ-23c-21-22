@@ -27,9 +27,8 @@ public class Game extends JPanel {
 		window.setVisible(true);
         fleet.setlayout();
         window.addKeyListener(new Listener());
-        Timer timerClock = new Timer(20, e -> {
+        Timer timerClock = new Timer(10, e -> {
             //ruch player'a w prawo
-
             if (goRight){
                 if(player.current_x() != window_width - 100) {
                     player.position(player.x_axis += 10, player.y_axis);
@@ -68,6 +67,7 @@ public class Game extends JPanel {
         player.drawPlayer(g);
     //    alienLaser.drawAlienLaser(g);
         laser.drawLaser(g);
+        g.drawString("Hello", 30, 30);
     }
 
     static class Listener implements KeyListener {

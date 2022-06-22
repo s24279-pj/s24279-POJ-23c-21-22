@@ -4,7 +4,7 @@ import java.util.Random;
 public class Fleet {
 
     Alien ship = new Alien();
-  //  AlienLaser alien_laser = new AlienLaser();
+    //  AlienLaser alien_laser = new AlienLaser();
 
     Alien[] line1 = new Alien[10];
     Alien[] line2 = new Alien[10];
@@ -21,7 +21,7 @@ public class Fleet {
     int start_x = 50;
     int start_y;
     boolean moveToRight = true;
-   // boolean isShooting = false;
+    // boolean isShooting = false;
     int window_width = 900;
     boolean test = false; // testowa zmienna do Laser.shotMove() - oznacza trafienie alien'a
 
@@ -50,7 +50,7 @@ public class Fleet {
     }
 
     public void drawFleet(Graphics g) {
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             line1[i].drawAlien(g);
             line2[i].drawAlien(g);
             line3[i].drawAlien(g);
@@ -60,11 +60,11 @@ public class Fleet {
 
     public void moveFleet() {
 
-        if(moveToRight) {
+        if (moveToRight) {
             //prawa krawedz, ruch w dół
             for (int i = 9; i >= 0; i--) {
-                if(line1[i].isAlive() || line2[i].isAlive() || line3[i].isAlive()) {
-                    if(line1[i].current_x() > window_width + line1[i].alien_width - 100) {
+                if (line1[i].isAlive() || line2[i].isAlive() || line3[i].isAlive()) {
+                    if (line1[i].current_x() > window_width + line1[i].alien_width - 100) {
                         moveToRight = false;
                         moveDown();
                     }
@@ -80,8 +80,8 @@ public class Fleet {
 
             //lewa krawedz, ruch w dół
             for (int i = 0; i < 10; i++) {
-                if(line1[i].isAlive() || line2[i].isAlive() || line3[i].isAlive()) {
-                    if(line1[i].current_x() == 50) {
+                if (line1[i].isAlive() || line2[i].isAlive() || line3[i].isAlive()) {
+                    if (line1[i].current_x() == 50) {
                         moveToRight = true;
                         moveDown();
                     }
@@ -105,6 +105,38 @@ public class Fleet {
     }
 
     public void checkPlayerShot(int laser_x, int laser_y) {
+        for (int i = 0; i < 10; i++) {
+
+            if (laser_y < line3[i].current_y() + ship.alien_height && laser_y >= line3[i].current_y()) {
+                if (laser_x >= line3[i].current_x() && laser_x <= (line3[i].current_x() + ship.alien_width)) {
+                    if (line3[i].isAlive()) {
+                        line3[i].alienStatus = false;
+                        Game.laserShot = false;
+                    }
+                }
+            }
+
+
+            if (laser_y < line2[i].current_y() + ship.alien_height && laser_y >= line2[i].current_y()) {
+                if (laser_x >= line2[i].current_x() && laser_x <= (line2[i].current_x() + ship.alien_width)) {
+                    if (line2[i].isAlive()) {
+                        line2[i].alienStatus = false;
+                        Game.laserShot = false;
+                    }
+                }
+            }
+
+            if (laser_y < line1[i].current_y() + ship.alien_height && laser_y >= line1[i].current_y()) {
+                if (laser_x >= line1[i].current_x() && laser_x <= (line1[i].current_x() + ship.alien_width)) {
+                    if (line1[i].isAlive()) {
+                        line1[i].alienStatus = false;
+                        Game.laserShot = false;
+                    }
+                }
+            }
+
+        }
+/*    public void checkPlayerShot(int laser_x, int laser_y) {
         for(int i = 0; i < 10; i++) {
             //checking if lowest's line alien is in range and if it is alive
             if(laser_x >= line3[i].current_x() && laser_x <= (line3[i].current_x() + ship.alien_width) ){
@@ -136,9 +168,10 @@ public class Fleet {
             }
 
 
-        }
+        }*/
 
     }
+}
 
 /*    public void attack() {
         Random random = new Random();
@@ -150,26 +183,5 @@ public class Fleet {
 
     }*/
     //back-up
-/*public void checkPlayerShot(int laser_x, int laser_y) {
-    for(int i = 0; i < 10; i++) {
-        if(laser_x >= line3[i].current_x() && laser_x <= (line3[i].current_x() + ship.alien_width) ){
-            if(laser_y <= line3[i].current_y() + ship.alien_height && laser_y >= line3[i].current_y()){
-                line3[i].alienStatus = false;
-                test = true;
-            }
-        }
-        if(laser_x >= line2[i].current_x() && laser_x <= (line2[i].current_x() + ship.alien_width) ){
-            if(laser_y <= line2[i].current_y() + ship.alien_height && laser_y >= line2[i].current_y()){
-                line2[i].alienStatus = false;
-                test = true;
-            }
-        }
-        if(laser_x >= line1[i].current_x() && laser_x <= (line1[i].current_x() + ship.alien_width) ){
-            if(laser_y <= line1[i].current_y() + ship.alien_height && laser_y >= line1[i].current_y()){
-                line1[i].alienStatus = false;
-                test = true;
-            }
-        }
 
-    }*/
 

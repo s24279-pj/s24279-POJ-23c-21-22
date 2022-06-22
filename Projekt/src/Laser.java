@@ -28,16 +28,21 @@ public class Laser {
     public void drawLaser(Graphics g) {
         Graphics2D laser = (Graphics2D) g;
         Rectangle2D.Double laser_blast = new Rectangle2D.Double(shot_x, shot_y, 5, 10);
-        laser.setColor(Color.green);
+        if(Game.laserShot) {
+            laser.setColor(Color.green);
+            laser_blast.height = 10;
+            laser_blast.width = 5;
+        }else {
+            laser_blast.height = 0;
+            laser_blast.width = 0;
+        }
         laser.fill(laser_blast);
     }
 
-    //sprawdzic, czemu przelatuje do konca, mimo, ze uderza w alien'a
     public void shotMove(int x) {
         shot_y -= 10;
-        if (shot_y < 0 || fleet.test) {
+        if (shot_y < 0 || !Game.laserShot) {
             position(x + (player.player_width/2), shot_y);
-            Game.laserShot = false;
         }
 
     }
