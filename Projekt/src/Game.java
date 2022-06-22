@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class Game extends JFrame {
+public class Game extends JPanel {
 
     Fleet fleet = new Fleet();
     Player player = new Player();
@@ -17,13 +17,16 @@ public class Game extends JFrame {
 
 
     public Game() {
-        setTitle("Space Invaders");
-        setSize(900, 700);
-        setVisible(true);
-        setBackground(Color.DARK_GRAY);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setPreferredSize(new Dimension(900,700));
+		final JFrame window = new JFrame();
+		window.setTitle("Space Invaders");
+		window.setBackground(Color.DARK_GRAY);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.add(this);
+		window.pack();
+		window.setVisible(true);
         fleet.setlayout();
-        addKeyListener(new Listener());
+        window.addKeyListener(new Listener());
         Timer timerClock = new Timer(20, e -> {
             //ruch player'a w prawo
 
@@ -59,7 +62,7 @@ public class Game extends JFrame {
         timerClock.start();
     }
 
-    public void paint(Graphics g) {
+    public void paintComponent(Graphics g) {
         g.clearRect(0,0,900,700);
         fleet.drawFleet(g);
         player.drawPlayer(g);
