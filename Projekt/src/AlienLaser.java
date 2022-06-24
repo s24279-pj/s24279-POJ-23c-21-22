@@ -1,14 +1,14 @@
-/*
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 public class AlienLaser {
 
     Player player = new Player();
-    Fleet fleet = new Fleet();
+ //   Fleet fleet = new Fleet();
+    Alien alien = new Alien();
 
-    int x = 30;
-    int shot_y = 30;
+    int x = 0;
+    int shot_y = 0;
 
     // int shot_x = 0;
     public void position(int pos_x, int pos_y){
@@ -28,14 +28,20 @@ public class AlienLaser {
     public void drawAlienLaser(Graphics g) {
         Graphics2D laser = (Graphics2D) g;
         Rectangle2D.Double laser_alien = new Rectangle2D.Double(x, shot_y, 5, 10);
-        laser.setColor(Color.white);
+        laser.setColor(Color.black);
         laser.fill(laser_alien);
     }
 
 
-    public void shotMove(int x, int y) {
-        y += 5;
-
+   public void shotMove(int x, int y){
+        if(player.isHit(x, y)){
+            alien.shotStatus = false;
+        }
+        y += 10;
+        if(y > 700){
+            alien.shotStatus = false;
+        }
     }
+
 }
-*/
+

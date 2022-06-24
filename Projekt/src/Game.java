@@ -1,6 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 
 public class Game extends JPanel {
@@ -8,7 +11,7 @@ public class Game extends JPanel {
     Fleet fleet = new Fleet();
     Player player = new Player();
     Laser laser = new Laser();
-  //  AlienLaser alienLaser = new AlienLaser();
+    AlienLaser alienLaser = new AlienLaser();
 
     static boolean goRight = false;
     static boolean goLeft = false;
@@ -20,7 +23,7 @@ public class Game extends JPanel {
 		setPreferredSize(new Dimension(900,700));
 		final JFrame window = new JFrame();
 		window.setTitle("Space Invaders");
-		window.setBackground(Color.DARK_GRAY);
+	//	window.setBackground(Color.DARK_GRAY);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.add(this);
 		window.pack();
@@ -55,6 +58,8 @@ public class Game extends JPanel {
                 fleet.checkPlayerShot(laser.shot_x, laser.shot_y);
                 laser.shotMove(player.x_axis);
             }
+
+    //        fleet.attack();
             fleet.moveFleet();
             repaint();
         });
@@ -65,9 +70,9 @@ public class Game extends JPanel {
         g.clearRect(0,0,900,700);
         fleet.drawFleet(g);
         player.drawPlayer(g);
-    //    alienLaser.drawAlienLaser(g);
+        alienLaser.drawAlienLaser(g);
         laser.drawLaser(g);
-        g.drawString("Hello", 30, 30);
+     //   g.drawString("Score: ", 30, 30);
     }
 
     static class Listener implements KeyListener {

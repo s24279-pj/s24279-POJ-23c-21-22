@@ -41,8 +41,9 @@ public class Laser {
 
     public void shotMove(int x) {
         shot_y -= 10;
-        if (shot_y < 0 || !Game.laserShot) {
+        if (shot_y <= 0 || !Game.laserShot) {
             position(x + (player.player_width/2), shot_y);
+            Game.laserShot = false;
         }
 
     }

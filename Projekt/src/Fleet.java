@@ -4,7 +4,7 @@ import java.util.Random;
 public class Fleet {
 
     Alien ship = new Alien();
-    //  AlienLaser alien_laser = new AlienLaser();
+    AlienLaser alien_laser = new AlienLaser();
 
     Alien[] line1 = new Alien[10];
     Alien[] line2 = new Alien[10];
@@ -21,9 +21,7 @@ public class Fleet {
     int start_x = 50;
     int start_y;
     boolean moveToRight = true;
-    // boolean isShooting = false;
     int window_width = 900;
-    boolean test = false; // testowa zmienna do Laser.shotMove() - oznacza trafienie alien'a
 
 
     public void setlayout() {
@@ -54,9 +52,13 @@ public class Fleet {
             line1[i].drawAlien(g);
             line2[i].drawAlien(g);
             line3[i].drawAlien(g);
-        }
-    }
 
+            if(line3[i].isShooting()) {
+                alien_laser.drawAlienLaser(g);
+            }
+        }
+
+    }
 
     public void moveFleet() {
 
@@ -134,54 +136,21 @@ public class Fleet {
                     }
                 }
             }
+        }
+    }
+
+    public void attack() {
+        //dodac te randomy do tablicy wektorowej i stamtad puszczac
+        Random random = new Random();
+        int alien_nr = random.nextInt(10);
+        alien_laser.position(line3[0].x_axis + (line3[0].alien_width / 2), line3[0].current_y() + line3[0].alien_height);
+        if(line3[0].isAlive()) {
+            line3[0].shotStatus = true;
 
         }
-/*    public void checkPlayerShot(int laser_x, int laser_y) {
-        for(int i = 0; i < 10; i++) {
-            //checking if lowest's line alien is in range and if it is alive
-            if(laser_x >= line3[i].current_x() && laser_x <= (line3[i].current_x() + ship.alien_width) ){
-                if(laser_y <= line3[i].current_y() + ship.alien_height && laser_y >= line3[i].current_y()){
-                    if(line3[i].isAlive()) {
-                        line3[i].alienStatus = false;
-                        test = true;
-                        //checking if middle line alien is in range and if it is alive
-                    }else if(laser_x >= line2[i].current_x() && laser_x <= (line2[i].current_x() + ship.alien_width) ){
-                        if(laser_y <= line2[i].current_y() + ship.alien_height && laser_y >= line2[i].current_y()){
-                            if(line2[i].isAlive()) {
-                                line2[i].alienStatus = false;
-                                test = true;
-                                //checking if top line alien is in range and if it is alive
-                            }else if(laser_x >= line1[i].current_x() && laser_x <= (line1[i].current_x() + ship.alien_width) ){
-                                if(laser_y <= line1[i].current_y() + ship.alien_height && laser_y >= line1[i].current_y()){
-                                    if(line1[i].isAlive()) {
-                                        line1[i].alienStatus = false;
-                                        test = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-
-            }
-
-
-        }*/
-
     }
 }
 
-/*    public void attack() {
-        Random random = new Random();
-        int alien_nr = random.nextInt(10);
-        if(line1[alien_nr].isAlive()){
-           // alien_laser.shot_y += 10;
-            alien_laser.position(line1[alien_nr].current_x(), alien_laser.shot_y);
-        }
 
-    }*/
-    //back-up
 
 
