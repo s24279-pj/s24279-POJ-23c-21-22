@@ -32,7 +32,7 @@ public class Player extends JFrame {
         player.fill(player_ship);
     }
 
-    public boolean isHit(int x, int y) {
+/*    public boolean isHit(int x, int y) {
         if(x >= x_axis && x <= x_axis + player_width) {
             if(y <= y_axis){
                 System.out.println("trafilo Cie");
@@ -40,6 +40,6 @@ public class Player extends JFrame {
             }
         }
         return false;
-    }
+    }*/
 }
 

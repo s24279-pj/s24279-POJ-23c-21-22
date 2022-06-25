@@ -2,8 +2,9 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
-public class Alien {
+public class Alien extends Images {
 
     int x_axis = 0;
     int y_axis = 0;
@@ -25,6 +26,11 @@ public class Alien {
         return y_axis;
     }
 
+/*    @Override
+    public void getImage(String path) throws IOException {
+        super.getImage("alien.png");
+    }*/
+
     public void drawAlien(Graphics g) {
 
             Graphics2D alien = (Graphics2D) g;
@@ -32,9 +38,12 @@ public class Alien {
             if(alienStatus) {
                 alien.setColor(Color.red);
             }else{
-                alien.setColor(Color.DARK_GRAY);
+                alien_width = 0;
+                alien_height = 0;
+      //          alien.setColor(Color.DARK_GRAY);
             }
             alien.fill(alien_ship);
+       // g.drawImage(icon,x_axis,y_axis,alien_width,alien_height, null);
     }
 
     public boolean isAlive() { return alienStatus; }

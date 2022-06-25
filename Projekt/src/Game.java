@@ -13,17 +13,20 @@ public class Game extends JPanel {
     Laser laser = new Laser();
     AlienLaser alienLaser = new AlienLaser();
 
+    Font font = new Font ("Monospaced Plain", 1, 20);
+
     static boolean goRight = false;
     static boolean goLeft = false;
     static boolean laserShot = false;
     int window_width = 900;
+    int speed = 1;
 
 
     public Game() {
 		setPreferredSize(new Dimension(900,700));
-		final JFrame window = new JFrame();
+        final JFrame window = new JFrame();
 		window.setTitle("Space Invaders");
-	//	window.setBackground(Color.DARK_GRAY);
+		window.setBackground(Color.DARK_GRAY);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.add(this);
 		window.pack();
@@ -67,12 +70,19 @@ public class Game extends JPanel {
     }
 
     public void paintComponent(Graphics g) {
-        g.clearRect(0,0,900,700);
-        fleet.drawFleet(g);
-        player.drawPlayer(g);
-        alienLaser.drawAlienLaser(g);
-        laser.drawLaser(g);
-     //   g.drawString("Score: ", 30, 30);
+        if(!fleet.displayEnd) {
+            g.clearRect(0, 0, 900, 700);
+            fleet.drawFleet(g);
+            player.drawPlayer(g);
+            alienLaser.drawAlienLaser(g);
+            laser.drawLaser(g);
+            g.setFont(font);
+            g.drawString("Score: " + fleet.score, 50, 30);
+        }else {
+            g.setFont(font);
+            g.drawString("KONIEC GRY", 420, 320);
+            g.drawString("wynik: " + fleet.score, 430, 345);
+        }
     }
 
     static class Listener implements KeyListener {

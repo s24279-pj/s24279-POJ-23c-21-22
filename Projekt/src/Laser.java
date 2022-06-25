@@ -4,13 +4,10 @@ import java.awt.geom.Rectangle2D;
 public class Laser {
 
     Player player = new Player();
-    Fleet fleet = new Fleet();
 
-    int x_axis = 0;
-    int y_axis = 0;
     int shot_y = player.y_axis;
     int shot_x = 400 + (player.player_width / 2);
-   // int shot_x = 0;
+
     public void position(int pos_x, int pos_y){
         shot_x = pos_x;
         shot_y = pos_y;
@@ -21,8 +18,9 @@ public class Laser {
     }
 
     public int current_y() {
-        y_axis = player.y_axis;
-        return y_axis;
+
+        shot_y = player.y_axis;
+        return shot_y;
     }
 
     public void drawLaser(Graphics g) {
@@ -42,8 +40,8 @@ public class Laser {
     public void shotMove(int x) {
         shot_y -= 10;
         if (shot_y <= 0 || !Game.laserShot) {
-            position(x + (player.player_width/2), shot_y);
             Game.laserShot = false;
+            position(x + (player.player_width/2), shot_y);
         }
 
     }
