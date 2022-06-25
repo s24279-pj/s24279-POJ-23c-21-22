@@ -1,9 +1,8 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
+
+
 
 
 public class Game extends JPanel {
@@ -13,13 +12,13 @@ public class Game extends JPanel {
     Laser laser = new Laser();
     AlienLaser alienLaser = new AlienLaser();
 
-    Font font = new Font ("Monospaced Plain", 1, 20);
+    Font fontScore = new Font ("Monospaced Plain", 1, 20);
+    Font fontEnd = new Font ("Monospaced Plain", 1, 50);
 
     static boolean goRight = false;
     static boolean goLeft = false;
     static boolean laserShot = false;
     int window_width = 900;
-    int speed = 1;
 
 
     public Game() {
@@ -61,8 +60,7 @@ public class Game extends JPanel {
                 fleet.checkPlayerShot(laser.shot_x, laser.shot_y);
                 laser.shotMove(player.x_axis);
             }
-
-    //        fleet.attack();
+    //      fleet.attack();
             fleet.moveFleet();
             repaint();
         });
@@ -76,10 +74,10 @@ public class Game extends JPanel {
             player.drawPlayer(g);
             alienLaser.drawAlienLaser(g);
             laser.drawLaser(g);
-            g.setFont(font);
-            g.drawString("Score: " + fleet.score, 50, 30);
+            g.setFont(fontScore);
+            g.drawString("SCORE: " + fleet.score, 50, 30);
         }else {
-            g.setFont(font);
+            g.setFont(fontEnd);
             g.drawString("KONIEC GRY", 420, 320);
             g.drawString("wynik: " + fleet.score, 430, 345);
         }

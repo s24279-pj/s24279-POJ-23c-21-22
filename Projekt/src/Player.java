@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
-import java.sql.SQLOutput;
 
 public class Player extends JFrame {
 
